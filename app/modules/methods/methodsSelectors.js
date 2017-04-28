@@ -1,0 +1,1 @@
+export const methodSelector = (state) => state.method;

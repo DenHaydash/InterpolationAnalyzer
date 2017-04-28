@@ -1,0 +1,37 @@
+.main {
+    width: 900px;
+    margin: 15px auto;
+}
+
+.row {
+    &:after {
+        display: table;
+        clear: both;
+        content: ''
+    }
+
+    .col {
+        float: left;
+        margin: 10px;
+
+        @for $i from 1 through 9 {
+            &.w#{$i*10} {
+                width: percentage($i / 10);
+                box-sizing: border-box;        
+            }
+        }
+    }
+}
+
+.pointsBlock {
+    height: 210px;
+    overflow: auto;
+}
+
+.infoBlock {
+    height: 150px;
+    overflow: auto;
+    padding: {
+        left: 15px;
+    }
+}

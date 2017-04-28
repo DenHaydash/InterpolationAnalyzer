@@ -1,0 +1,1 @@
+export const isInterpolationModeEnabledSelector = (state) => state.isInterpolationModeEnabled;
