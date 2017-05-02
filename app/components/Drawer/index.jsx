@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ElementPortal from 'react-element-portal';
 import Konva from 'konva';
 
@@ -178,7 +179,7 @@ export default class Drawer extends Component {
                 
                 this.tooltip.hide();
                 this.tooltipLayer.draw();
-            })
+            });
 
             this.basePointsLayer.add(drawedPoint);
         }
@@ -213,7 +214,7 @@ export default class Drawer extends Component {
         this.tooltipLayer = new Konva.Layer();
 
         this.tooltip = new Konva.Label({
-            x: this.props.width - 100,
+            x: this.props.width - 120,
             y: 10,
             opacity: 0.75,
             visible: false
@@ -268,18 +269,18 @@ export default class Drawer extends Component {
 }
 
 Drawer.propTypes = {
-    width: React.PropTypes.number.isRequired,
-    height: React.PropTypes.number.isRequired,
-    onClick: React.PropTypes.func.isRequired,
-    info: React.PropTypes.string,
-    points: React.PropTypes.arrayOf(React.PropTypes.shape({
-        x: React.PropTypes.number.isRequired,
-        y: React.PropTypes.number.isRequired,
-        type: React.PropTypes.oneOf(Object.keys(pointTypes).map(t => pointTypes[t]))
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    onClick: PropTypes.func.isRequired,
+    info: PropTypes.string,
+    points: PropTypes.arrayOf(PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired,
+        type: PropTypes.oneOf(Object.keys(pointTypes).map(t => pointTypes[t]))
     })),
-    highlightedPointId: React.PropTypes.number,
-    scale: React.PropTypes.shape({
-        x: React.PropTypes.number.isRequired,
-        y: React.PropTypes.number.isRequired
+    highlightedPointId: PropTypes.number,
+    scale: PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired
     })
 };

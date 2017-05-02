@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { List as UiList, ListItem } from 'material-ui/List';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -15,7 +16,7 @@ const IconButtonElement = ({isInterpolationModeEnabled}) => (
 );
 
 IconButtonElement.propTypes = {
-    isInterpolationModeEnabled: React.PropTypes.bool.isRequired
+    isInterpolationModeEnabled: PropTypes.bool.isRequired
 };
 
 const RightIconMenu = (props, item) => (
@@ -25,7 +26,7 @@ const RightIconMenu = (props, item) => (
 );
 
 RightIconMenu.propTypes = {
-    onRemovePoint: React.PropTypes.func.isRequired
+    onRemovePoint: PropTypes.func.isRequired
 };
 
 export default class List extends PureComponent {
@@ -45,11 +46,11 @@ export default class List extends PureComponent {
 }
 
 List.propTypes = {
-    points: React.PropTypes.arrayOf(React.PropTypes.shape({
-        x: React.PropTypes.number.isRequired,
-        y: React.PropTypes.number.isRequired
+    points: PropTypes.arrayOf(PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired
     })),
-    isInterpolationModeEnabled: React.PropTypes.bool.isRequired,
-    onRemovePoint: React.PropTypes.func.isRequired,
-    onPointHighlight: React.PropTypes.func.isRequired
+    isInterpolationModeEnabled: PropTypes.bool.isRequired,
+    onRemovePoint: PropTypes.func.isRequired,
+    onPointHighlight: PropTypes.func.isRequired
 };

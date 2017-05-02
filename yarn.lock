@@ -2167,7 +2167,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6:
+fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6, fbjs@^0.8.9:
   version "0.8.12"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
   dependencies:
@@ -4090,6 +4090,12 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+prop-types@^15.5.8:
+  version "15.5.8"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
+  dependencies:
+    fbjs "^0.8.9"
+
 proxy-addr@~1.1.3:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-1.1.4.tgz#27e545f6960a44a627d9b44467e35c1b6b4ce2f3"
@@ -4207,9 +4213,9 @@ react-dom@^15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-element-portal@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-element-portal/-/react-element-portal-1.0.0.tgz#c6b7a53ce3bc07db3efdae1634f8eb1f165de3e0"
+react-element-portal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-element-portal/-/react-element-portal-1.1.0.tgz#9ec3456580e81db551effa4c0215680f47edf8fe"
 
 react-event-listener@^0.4.0:
   version "0.4.3"

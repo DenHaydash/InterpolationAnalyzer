@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Toggle from 'material-ui/Toggle';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
@@ -27,8 +28,8 @@ export default class ModeSwitcher extends PureComponent {
 }
 
 ModeSwitcher.propTypes = {
-    isInterpolationModeEnabled: React.PropTypes.bool.isRequired,
-    isInterpolationPossible: React.PropTypes.bool.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    onClearAllClick: React.PropTypes.func.isRequired
+    isInterpolationModeEnabled: PropTypes.bool.isRequired,
+    isInterpolationPossible: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onClearAllClick: PropTypes.func.isRequired
 };

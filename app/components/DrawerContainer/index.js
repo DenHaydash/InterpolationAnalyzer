@@ -3,10 +3,10 @@ import compose from 'recompose/compose';
 import withHandlers from 'recompose/withHandlers';
 import withProps from 'recompose/withProps';
 import range from 'lodash/range';
+import maxBy from 'lodash/maxBy';
 
 import Drawer from '../Drawer';
 
-import { canvasPointsSelector } from '../../modules/points/pointsSelectors';
 import { isInterpolationModeEnabledSelector } from '../../modules/mode/modeSelectors';
 import { minXSelector,
          maxXSelector,
@@ -27,6 +27,7 @@ import interpolationMethodFactory from '../../algorithms/factory';
 import { calculateLength } from '../../algorithms/base/vectorMethods';
 
 import { toRealCoords, toCanvasCoords } from '../../helpers/coordConverter';
+import { computeScaleFactor } from '../../helpers/scaleHelper';
 
 const defaultCalculatedPoints = [];
 const defaultInfo = '';
@@ -54,7 +55,7 @@ const rangeGenerator = (state) => {
             return range(minX, maxX, (Math.abs(maxX - minX) / dotsPerPath));
         }
     }
-}
+};
 
 const pointsGetter = (state) => {
     switch (methodSelector(state)) {
@@ -65,22 +66,32 @@ const pointsGetter = (state) => {
         default:
             return orderedPointsSelector(state);        
     }
-}
+};
+
 
 const mapStateToProps = (state) => {
     const interpolationMethod = state.isInterpolationModeEnabled &&
         interpolationMethodFactory(methodSelector(state))(pointsGetter(state));
-    const scale = scaleSelector(state);
+
+    const calculatedPoints = state.isInterpolationModeEnabled ?
+                rangeGenerator(state)
+                    .map(n => ({...interpolationMethod.calculate(n)})) :
+                defaultCalculatedPoints;
+
+    const scale = state.isInterpolationModeEnabled ?
+        computeScaleFactor(
+            Math.abs(maxBy(calculatedPoints, p => Math.abs(p.x)).x),
+            Math.abs(maxBy(calculatedPoints, p => Math.abs(p.y)).y)) :
+        scaleSelector(state);
+
+    const points = orderedPointsSelector(state)
+        .map(p => ({ ...p, type: pointTypes.base }))
+        .concat(calculatedPoints
+                .map(p => ({ ...p, type: pointTypes.calculated })))
+        .map(p => ({ ...p, ...toCanvasCoords(p, scale) }));
 
     return {
-        points: canvasPointsSelector(state)
-            .map(p => ({ ...p, type: pointTypes.base }))
-            .concat(state.isInterpolationModeEnabled ? 
-                rangeGenerator(state)
-                .map(n => ({...interpolationMethod.calculate(n)}))
-                .map(p => toCanvasCoords(p, scale))
-                .map(p => ({ ...p, type: pointTypes.calculated })) : 
-                defaultCalculatedPoints),
+        points,
         highlightedPointId: highlightedPointIdSelector(state),
         info: interpolationMethod.info || defaultInfo,
         isInterpolationModeEnabled: isInterpolationModeEnabledSelector(state),

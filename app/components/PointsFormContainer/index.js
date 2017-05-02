@@ -16,7 +16,7 @@ const mapDispatchToProps = {
     addPoint
 };
 
-const numberRegexp = /^(\+|\-)?\d+$/;
+const numberRegexp = /^(\+|\-)?\d+(.\d+)?$/;
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),

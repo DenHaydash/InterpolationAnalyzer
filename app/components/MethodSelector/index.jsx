@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -21,11 +22,11 @@ export default class MethodSelector extends PureComponent {
 }
 
 MethodSelector.propTypes = {
-    selectedMethod: React.PropTypes.string.isRequired,
-    isInterpolationModeEnabled: React.PropTypes.bool.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    methods: React.PropTypes.arrayOf(React.PropTypes.shape({
-        type: React.PropTypes.string.isRequired,
-        name: React.PropTypes.string.isRequired
+    selectedMethod: PropTypes.string.isRequired,
+    isInterpolationModeEnabled: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    methods: PropTypes.arrayOf(PropTypes.shape({
+        type: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
     }))
 };

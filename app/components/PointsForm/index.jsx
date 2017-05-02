@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -37,9 +38,9 @@ export default class PointsForm extends PureComponent {
 }
 
 PointsForm.propTypes = {
-    x: React.PropTypes.string,
-    y: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    onSubmit: React.PropTypes.func.isRequired,
-    isInterpolationModeEnabled: React.PropTypes.bool.isRequired
+    x: PropTypes.string,
+    y: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    isInterpolationModeEnabled: PropTypes.bool.isRequired
 };

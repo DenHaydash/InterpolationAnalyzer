@@ -109,7 +109,7 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader'
-            },
+            }
         ]
     },
     resolve: {
@@ -121,7 +121,7 @@ module.exports = {
     },
     stats: {
       colors: {
-        green: '\u001b[32m',
+        green: '\u001b[32m'
       }
     },
     devServer: {
@@ -142,7 +142,7 @@ module.exports = {
             version: false,
             warnings: true,
             colors: {
-                green: '\u001b[32m',
+                green: '\u001b[32m'
             }
         }
     }

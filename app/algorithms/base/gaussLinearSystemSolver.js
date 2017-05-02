@@ -1,4 +1,3 @@
-// Gauss method
 export function findRoots(a, y) {
     const c = [...a.map(i => [...i])],
           b = [...y];

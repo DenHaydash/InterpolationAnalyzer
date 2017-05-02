@@ -10,13 +10,13 @@ import List from '../List';
 
 const mapStateToProps = (state) => ({
     points: orderedPointsSelector(state),
-    isInterpolationModeEnabled: isInterpolationModeEnabledSelector(state),
+    isInterpolationModeEnabled: isInterpolationModeEnabledSelector(state)
 });
 
 const mapDispatchToProps = {
     removePoint,
     highlightSelectedPoint
-}
+};
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),

@@ -1,11 +1,12 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { AppContainer } from 'react-hot-loader'
 
 import appReducer from './reducers/appReducer';
 
@@ -25,11 +26,21 @@ const store = createStore(
     applyMiddleware(...middleware)
 );
 
-render(
-    <Provider store={store}>
-        <MuiThemeProvider>
-            <Main />
-        </MuiThemeProvider>
-    </Provider>,
-    document.getElementById("root")
-);
+const render = Component => {
+    ReactDOM.render(
+        <AppContainer>
+            <Provider store={store}>
+                <MuiThemeProvider>
+                    <Component />
+                </MuiThemeProvider>
+            </Provider>
+        </AppContainer>,
+        document.getElementById("root")
+    );
+};
+
+render(Main);
+
+if (module.hot) {
+    module.hot.accept('./components/Main', () => render(Main));
+}
