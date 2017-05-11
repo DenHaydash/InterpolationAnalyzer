@@ -8,6 +8,11 @@ export const ols2 = {
     name: '1. Ordinary Least Squares 2nd order approximation'
 };
 
+export const olsCombined = {
+    type: 'OLSCOMB',
+    name: '1. Ordinary Least Squares 1st and 2nd order combined approximation'
+};
+
 export const linear = {
     type: 'LN',
     name: '2. Linear interpolation'

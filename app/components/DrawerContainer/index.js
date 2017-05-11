@@ -4,6 +4,7 @@ import withHandlers from 'recompose/withHandlers';
 import withProps from 'recompose/withProps';
 import range from 'lodash/range';
 import maxBy from 'lodash/maxBy';
+import flatten from 'lodash/flatten';
 
 import Drawer from '../Drawer';
 
@@ -74,8 +75,8 @@ const mapStateToProps = (state) => {
         interpolationMethodFactory(methodSelector(state))(pointsGetter(state));
 
     const calculatedPoints = state.isInterpolationModeEnabled ?
-                rangeGenerator(state)
-                    .map(n => ({...interpolationMethod.calculate(n)})) :
+                flatten(rangeGenerator(state)
+                    .map(n => interpolationMethod.calculate(n))) :
                 defaultCalculatedPoints;
 
     const scale = state.isInterpolationModeEnabled ?
